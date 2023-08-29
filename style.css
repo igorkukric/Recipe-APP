@@ -140,3 +140,21 @@ ul {
     text-align: center;
     color: #fff;
 }
+
+@media screen and(max-width: 500px) {
+    .container {
+        font-size: 14px;
+        padding: 35px 25px 28px;
+    }
+    #show-recipe {
+        left: 73%;
+    }
+ 
+}
+@media screen and (max-width: 280px) {
+   
+#show-recipe {
+    position: relative;
+    left: 10px;
+}
+}
