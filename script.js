@@ -12,13 +12,15 @@ searchInput.addEventListener("keydown", function (e) {
     searchMeal();
   }
 });
+
 // Handle meal function
 function searchMeal() {
-  const userInput = searchInput.ariaValueMax.trim();
+  const userInput = searchInput.value.trim();
   if (!userInput) {
     resultContainer.innerHTML = `<h3>Input Field Cannot Be Empty</h3>`;
     return;
   }
+  
   // Fetch meal data using api with user input
   fetch(apiUrl + userInput)
     .then((response) => response.json())
@@ -75,6 +77,20 @@ function getIngredients(meal) {
       const measure = meal[`strMeasure${i}`];
       ingreHtml += `<li>${measure} ${ingredient}</li>`;
     }
-    
+    // If ingreditent doesn't exist, exit loop
+    else {
+        break
+    }
   }
+  return ingreHtml
+}
+
+// Handle show and hide recipe for a meal
+function hideRecipe() {
+    const recipe = document.getElementById("recipe")
+    recipe.style.display = "none"
+}
+function showRecipe() {
+    const recipe = document.getElementById("recipe")
+    recipe.style.display = "block"
 }
