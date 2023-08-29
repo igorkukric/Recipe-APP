@@ -20,7 +20,7 @@ function searchMeal() {
     resultContainer.innerHTML = `<h3>Input Field Cannot Be Empty</h3>`;
     return;
   }
-  
+
   // Fetch meal data using api with user input
   fetch(apiUrl + userInput)
     .then((response) => response.json())
@@ -71,7 +71,7 @@ function searchMeal() {
 function getIngredients(meal) {
   let ingreHtml = "";
   // There can be maximum of 20 ingredients
-  for (let i = 0; i <= 20; i++) {
+  for (let i = 1; i <= 20; i++) {
     const ingredient = meal[`strIngredient${i}`];
     if (ingredient) {
       const measure = meal[`strMeasure${i}`];
