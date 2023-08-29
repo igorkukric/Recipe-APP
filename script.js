@@ -49,5 +49,32 @@ function searchMeal() {
         
         `;
       resultContainer.innerHTML = recipeHtml;
+
+      const hideRecipeBtn = document.getElementById("hide-recipe");
+      hideRecipeBtn.addEventListener("click", hideRecipe);
+      const showRecipeBtn = document.getElementById("show-recipe");
+      showRecipeBtn.addEventListener("click", showRecipe);
+      searchContainer.style.opacity = "0";
+      searchContainer.style.display = "none";
+    })
+    // Handle error
+    .catch(() => {
+      searchContainer.style.opacity = "1";
+      searchContainer.style.display = "grid";
+      resultContainer.innerHTML = `<h3>Error fetching data!</h3>`;
     });
+}
+
+// Generate html for list of ingrediants
+function getIngredients(meal) {
+  let ingreHtml = "";
+  // There can be maximum of 20 ingredients
+  for (let i = 0; i <= 20; i++) {
+    const ingredient = meal[`strIngredient${i}`];
+    if (ingredient) {
+      const measure = meal[`strMeasure${i}`];
+      ingreHtml += `<li>${measure} ${ingredient}</li>`;
+    }
+    
+  }
 }
